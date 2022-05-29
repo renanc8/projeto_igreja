@@ -250,3 +250,19 @@ inner join pessoa as aconselhada
 on aconselhada.id_pessoa = AP.Pessoa_aconselhada 
 where month(Data_Aconselhamento) = 06;
 
+#Pessoas que nunca dizimaram
+select nome as Membros_que_nunca_dizimaram
+from pessoa
+left outer join dizimo 
+on pessoa.id_pessoa = dizimo.pessoa
+where dizimo.pessoa IS null; 
+
+#Pessoa que mais dizimou no ano de 2022
+select pessoa.nome, count(dizimo.Valor_dizimo) as Quantidade_de_dizimo
+from pessoa
+inner join dizimo
+on pessoa.id_pessoa = dizimo.pessoa
+where year (data_dizimo) = 2022
+group by nome
+order by Quantidade_de_dizimo desc;
+
