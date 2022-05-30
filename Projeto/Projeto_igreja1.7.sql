@@ -282,7 +282,7 @@ on P.id_pessoa = PC.Pessoa
 group by Nome order by Quantidade_de_Cargos desc;
 
 #Pessoa que tem maior dízimo da história da igreja
-select pessoa, Valor_dizimo as Maior_dizimo
+select Nome, Valor_dizimo as Maior_dizimo
 from pessoa P
 inner join dizimo D
 on P.id_pessoa = D.Pessoa
